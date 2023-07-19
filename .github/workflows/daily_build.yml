@@ -18,13 +18,15 @@ jobs:
     - run: pip install requests
     - run: python diff_tidb_tags.py >> $GITHUB_OUTPUT
       id: tag_list
+    outputs:
+      tag_list: ${{ steps.tag_list.outputs.DIFF_TAGS}}
 
   build:
     needs: diff_tags
     strategy:
       fail-fast: true
       matrix:
-        tag: ${{ steps.tag_list.outputs.tag_list }}
+        tag: ${{ needs.diff_tags.outputs.tag_list }}
     runs-on: ubuntu-latest
     steps:
     - run: echo ${{ matrix.tag }}
