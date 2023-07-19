@@ -1,0 +1,27 @@
+name: Daily Build
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  diff_tags:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - run: pip install requests
+    - run: python diff_tidb_tags.py >> $GITHUB_OUTPUT
+      id: tag_list
+
+  build:
+    needs: diff_tags
+    strategy:
+      fail-fast: true
+      matrix:
+        tag: ${{ steps.tag_list.outputs.tag_list }}
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{ matrix.tag }}
