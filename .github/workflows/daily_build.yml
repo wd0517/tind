@@ -48,6 +48,8 @@ jobs:
         push: true
         platforms: linux/amd64
         file: ./Dockerfile.new
-        build-args: TIDB_VERSION=${{ matrix.tag }},BUILD_VERSION=1
+        build-args: |
+          "TIDB_VERSION=${{ matrix.tag }}"
+          "BUILD_VERSION=1"
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/tind:${{ matrix.tag }}
 
