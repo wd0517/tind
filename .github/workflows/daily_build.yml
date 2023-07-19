@@ -2,6 +2,9 @@ name: Daily Build
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - test-action
 
 
 jobs:
