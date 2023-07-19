@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        tag: ${{ needs.diff_tags.outputs.tag_list }}
+        tag: ${{ fromJson(needs.diff_tags.outputs.tag_list) }}
     runs-on: ubuntu-latest
     steps:
     - run: echo ${{ matrix.tag }}
