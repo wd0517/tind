@@ -6,7 +6,6 @@ on:
     branches:
       - test-action
 
-
 jobs:
   diff_tags:
     runs-on: ubuntu-latest
@@ -16,7 +15,7 @@ jobs:
       with:
         python-version: 3.11
     - run: pip install requests
-    - run: python diff_tidb_tags.py >> $GITHUB_OUTPUT
+    - run: DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }} python diff_tidb_tags.py >> $GITHUB_OUTPUT
       id: tag_list
     outputs:
       tag_list: ${{ steps.tag_list.outputs.DIFF_TAGS}}
@@ -52,4 +51,3 @@ jobs:
           "TIDB_VERSION=${{ matrix.tag }}"
           "BUILD_VERSION=1"
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/tind:${{ matrix.tag }}
-

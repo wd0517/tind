@@ -1,6 +1,11 @@
+# This script is used to get the diff of tidb tags between pingcap and wangdi4zm
+import os
 import json
 import re
 import requests
+
+
+DOCKERHUB_USERNAME = os.environ.get('DOCKERHUB_USERNAME')
 
 
 def get_repo_tags_from_docker_hub(user:str, repo:str, page_size:int=100) -> set:
@@ -34,8 +39,6 @@ def get_repo_tags_from_docker_hub(user:str, repo:str, page_size:int=100) -> set:
     return set(filtered_tags)
 
 pingcap_tidb_tags = get_repo_tags_from_docker_hub('pingcap', 'tidb')
-wangdi4zm_tidb_tags = get_repo_tags_from_docker_hub('wangdi4zm', 'tind')
-diff = list(pingcap_tidb_tags - wangdi4zm_tidb_tags)
-diff = list(filter(lambda x: x >= 'v5', diff))
-# print(f'DIFF_TAGS={json.dumps(diff)}')
-print(f'DIFF_TAGS=["v7.1.0"]')
+wangdi4zm_tidb_tags = get_repo_tags_from_docker_hub(DOCKERHUB_USERNAME, 'tind')
+diff = list(filter(lambda x: x >= 'v5', pingcap_tidb_tags - wangdi4zm_tidb_tags))
+print(f'DIFF_TAGS={json.dumps(diff)}')
