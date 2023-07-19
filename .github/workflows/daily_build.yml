@@ -47,7 +47,7 @@ jobs:
         context: .
         push: true
         platforms: linux/amd64
-        file: ./Dockerfile.new
+        file: ./Dockerfile
         build-args: |
           "TIDB_VERSION=${{ matrix.tag }}"
           "BUILD_VERSION=1"
