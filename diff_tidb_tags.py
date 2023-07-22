@@ -41,4 +41,5 @@ def get_repo_tags_from_docker_hub(user:str, repo:str, page_size:int=100) -> set:
 pingcap_tidb_tags = get_repo_tags_from_docker_hub('pingcap', 'tidb')
 wangdi4zm_tidb_tags = get_repo_tags_from_docker_hub(DOCKERHUB_USERNAME, 'tind')
 diff = list(filter(lambda x: x >= 'v5', pingcap_tidb_tags - wangdi4zm_tidb_tags))
-print(f'DIFF_TAGS={json.dumps(diff)}')
+# print(f'DIFF_TAGS={json.dumps(diff)}')
+print(f'DIFF_TAGS=["v4.0.15"]')
