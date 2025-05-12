@@ -10,6 +10,7 @@ COPY tikv.conf /etc/supervisor/conf.d/
 COPY pd.conf /etc/supervisor/conf.d/
 COPY tidb.toml /conf/tidb.toml
 COPY tikv.toml /conf/tikv.toml
+COPY tidb-init.sql /conf/tidb-init.sql
 COPY entrypoint.sh /
 ADD https://tiup-mirrors.pingcap.com/tidb-${TIDB_VERSION}-linux-amd64.tar.gz /
 ADD https://tiup-mirrors.pingcap.com/pd-${TIDB_VERSION}-linux-amd64.tar.gz /

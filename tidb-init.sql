@@ -1,0 +1,1 @@
+set global tidb_enable_check_constraint = on;

@@ -1,5 +1,6 @@
 new_collations_enabled_on_first_bootstrap = true
 tidb_enable_change_column_type = true
+initialize-sql-file = "/conf/tidb-init.sql"
 
 [experimental]
 allow-expression-index = true
