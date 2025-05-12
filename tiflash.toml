@@ -1,0 +1,6 @@
+[flash]
+[flash.proxy]
+config = "/conf/tiflash_proxy.toml"
+
+[logger]
+level = "debug"
