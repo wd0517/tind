@@ -19,9 +19,6 @@ apt-get install -y \
     python3.? \
     python3.?-dev \
     python3.?-venv \
-    python3.10 \
-    python3.10-dev \
-    python3.10-venv \
     supervisor 
 
 pip3 install \

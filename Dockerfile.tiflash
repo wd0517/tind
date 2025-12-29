@@ -19,7 +19,7 @@ ADD https://tiup-mirrors.pingcap.com/tidb-${TIDB_VERSION}-linux-amd64.tar.gz /
 ADD https://tiup-mirrors.pingcap.com/pd-${TIDB_VERSION}-linux-amd64.tar.gz /
 ADD https://tiup-mirrors.pingcap.com/tikv-${TIDB_VERSION}-linux-amd64.tar.gz /
 ADD https://tiup-mirrors.pingcap.com/tiflash-${TIDB_VERSION}-linux-amd64.tar.gz /
-RUN chmod +x entrypoint.sh && bash setup.sh && rm /setup.sh && \
+RUN chmod +x entrypoint-tiflash.sh && bash setup.sh && rm /setup.sh && \
     tar -xvf tidb-${TIDB_VERSION}-linux-amd64.tar.gz && \
     tar -xvf pd-${TIDB_VERSION}-linux-amd64.tar.gz && \
     tar -xvf tikv-${TIDB_VERSION}-linux-amd64.tar.gz && \
